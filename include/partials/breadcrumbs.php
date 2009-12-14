@@ -1,5 +1,7 @@
 <ul class="breadcrumbs">
-  <li><a href="index.php">Home</a> &raquo; </li>
+  <? if(!array_key_exists('Home', $breadcrumbs)): ?>
+    <li><a href="index.php">Home</a> &raquo; </li>
+  <? endif; ?>
   <? $last_item = end($breadcrumbs); ?>
   <? foreach($breadcrumbs as $crumb => $link): ?>
     <li <? if(!$link): ?>class="here"<? endif; ?>>
