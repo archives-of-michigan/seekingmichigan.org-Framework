@@ -5,7 +5,7 @@ class HeaderHelper {
     $month = $this->getdate();
     $month = $month['mon'];
     if($month == 12 || ($month >= 1 && $month < 3)) { // winter
-      $scenes = array('ice','snow-trees');
+      $scenes = array('ice'); #,'snow-trees');
     } elseif($month == 3 || $month == 4) {
       $scenes = array('summer-fern');
     } elseif($month > 4 && $month <= 6) {  // spring, summer
