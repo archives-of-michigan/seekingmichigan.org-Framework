@@ -1,5 +1,5 @@
 <?php
-require_once dirname(__FILE__).'/../../../theme/lib/helpers/header_helper.php';
+require_once dirname(__FILE__).'/../../lib/helpers/header_helper.php';
 
 class HeaderHelperTest extends PHPUnit_Framework_TestCase {
   public function testWinter() {
