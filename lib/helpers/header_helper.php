@@ -20,7 +20,7 @@ class HeaderHelper {
 
   # proxy for PHP's getdate - makes testing easier
   private function getdate() {
-    getdate();
+    return getdate();
   }
 
   private function pick_scene($scenes) {
