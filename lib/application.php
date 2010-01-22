@@ -31,11 +31,15 @@ class Application {
   }
 
   public function category() {
-    preg_match('/category\/([^\/]+)/',$_SERVER['REQUEST_URI'], $path);
-    if(!$match) {
-      preg_match('/([^\/\?]+)/',$_SERVER['REQUEST_URI'], $path);
+    preg_match('/category\/([^\/]+)/', $this->uri(), $path);
+    if(!$path[1]) {
+      preg_match('/([^\/\?]+)/', $this->uri(), $path);
     }
 
     return $path[1];
+  }
+
+  public function uri() {
+    return $_SERVER['REQUEST_URI'];
   }
 }
