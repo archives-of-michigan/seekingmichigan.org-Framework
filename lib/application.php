@@ -47,7 +47,7 @@ class Application {
     foreach($vars as $var => $value) {
       $$var = $value;
     }
-    include(partial_path($name));
+    include($this->partial_path($name));
   }
 
   public function camelize($str) {
