@@ -20,11 +20,11 @@ class Application {
   }
 
   public function helper_object($name) {
-    if(!$helpers[$name]) {
-      $helpers[$name] = eval("return new ".$this->camelize($name).';');
+    if(!$this->helpers[$name]) {
+      $this->helpers[$name] = eval("return new ".$this->camelize($name).';');
     }
 
-    return $helpers[$name];
+    return $this->helpers[$name];
   }
 
   public function partial_path($name) {
