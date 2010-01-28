@@ -27,15 +27,17 @@ class Application {
     return $helpers[$name];
   }
 
-  public partial_path($name) {
-    $paths = preg_split('/\//', $name);
-    if(count($paths) > 1) {
-      $file = array_pop($name);
-      $partial_root = join('/',$name);
-      return $partial_roots[$partial_root].$file.'.php';
-    } else {
-      return $partial_roots[DEFAULT].$name.'.php';
+  public function partial_path($name) {
+    foreach($partial_roots as $root => $path) {
+      $partial_path = join('/',array($path,$name));
+      if(file_exists($partial_path)) {
+        return $partial_path;
+      }
     }
+    echo "<!-- WARNING could not find partial $name in partial paths ";
+    var_dump($partial_roots);
+    echo "-->";
+    return '';
   }
 
   public function partial() {
