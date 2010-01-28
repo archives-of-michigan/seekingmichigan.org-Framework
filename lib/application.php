@@ -19,7 +19,7 @@ class Application {
     foreach($list as $path) {
       include($path);
       $name = basename($path, '.php');
-      helper($name);
+      $this->helper($name);
     }
   }
 
