@@ -15,6 +15,14 @@ class Application {
     $partial_roots[$name] = $value;
   }
 
+  public function add_helpers($list) {
+    foreach($list as $path) {
+      include($path);
+      $name = basename($path, '.php');
+      helper($name);
+    }
+  }
+
   public function helper($name) {
     return $this->helper_object($name.'_helper');
   }
