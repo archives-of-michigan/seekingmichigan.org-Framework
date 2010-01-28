@@ -1,12 +1,17 @@
 <?php
 require_once('helpers.php');
 
+define("APP_DEFAULT_PARTIAL_PATH", "_default_partial_directory");
 class Application {
-  define('DEFAULT', '_default_partial_directory');
-  private $helpers = array();
-  private $partial_roots = array(DEFAULT => dirname(__FILE__).'/../include/partials');
+  private $helpers;
+  private $partial_roots;
 
-  public add_partial_root($name, $value) {
+  function __construct() {
+    $this->helpers = array();
+    $this->partial_roots = array(APP_DEFAULT_PARTIAL_PATH => dirname(__FILE__).'/../include/partials');
+  }
+
+  public function add_partial_root($name, $value) {
     $partial_roots[$name] = $value;
   }
 
