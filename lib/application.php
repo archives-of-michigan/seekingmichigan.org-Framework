@@ -36,14 +36,14 @@ class Application {
   }
 
   public function partial_path($name) {
-    foreach($partial_roots as $root => $path) {
+    foreach($this->partial_roots as $root => $path) {
       $partial_path = join('/',array($path,$name));
       if(file_exists($partial_path)) {
         return $partial_path;
       }
     }
     echo "<!-- WARNING could not find partial $name in partial paths ";
-    var_dump($partial_roots);
+    var_dump($this->partial_roots);
     echo "-->";
     return '';
   }
