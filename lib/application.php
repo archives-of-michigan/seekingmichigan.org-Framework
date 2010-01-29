@@ -37,7 +37,7 @@ class Application {
 
   public function partial_path($name) {
     foreach($this->partial_roots as $root => $path) {
-      $partial_path = join('/',array($path,$name));
+      $partial_path = join('/',array($path,$name)).'.php';
       if(file_exists($partial_path)) {
         return $partial_path;
       }
