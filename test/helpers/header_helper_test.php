@@ -6,7 +6,7 @@ class HeaderHelperTest extends PHPUnit_Framework_TestCase {
     $helper = $this->getMock('HeaderHelper');
     $helper->expects($this->any())
            ->method('getdate')
-           ->will($this->returnValue(array('mon' => 12));
+           ->will($this->returnValue(array('mon' => 12)));
     $helper->expects($this->any())
            ->method('pick_scene')
            ->with(array('ice','snow-trees'));
@@ -17,7 +17,7 @@ class HeaderHelperTest extends PHPUnit_Framework_TestCase {
     $helper = $this->getMock('HeaderHelper');
     $helper->expects($this->any())
            ->method('getdate')
-           ->will($this->returnValue(array('summer-fern'));
+           ->will($this->returnValue(array('summer-fern')));
     $helper->expects($this->any())
            ->method('pick_scene')
            ->with(array('ice','snow-trees'));
@@ -28,7 +28,7 @@ class HeaderHelperTest extends PHPUnit_Framework_TestCase {
     $helper = $this->getMock('HeaderHelper');
     $helper->expects($this->any())
            ->method('getdate')
-           ->will($this->returnValue(array('mon' => 7));
+           ->will($this->returnValue(array('mon' => 7)));
     $helper->expects($this->any())
            ->method('pick_scene')
            ->with(array('ship','summer-fern','summer-treeline','wheatgrass'));
@@ -39,7 +39,7 @@ class HeaderHelperTest extends PHPUnit_Framework_TestCase {
     $helper = $this->getMock('HeaderHelper');
     $helper->expects($this->any())
            ->method('getdate')
-           ->will($this->returnValue(array('mon' => 10));
+           ->will($this->returnValue(array('mon' => 10)));
     $helper->expects($this->any())
            ->method('pick_scene')
            ->with(array('fall-treeline','ship','snow-sun'));
