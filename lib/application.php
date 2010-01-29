@@ -8,11 +8,11 @@ class Application {
 
   function __construct() {
     $this->helpers = array();
-    $this->partial_roots = array(APP_DEFAULT_PARTIAL_PATH => dirname(__FILE__).'/../include/partials');
+    $this->partial_roots = array(APP_DEFAULT_PARTIAL_PATH => realpath(dirname(__FILE__).'/../include/partials'));
   }
 
   public function add_partial_root($name, $value) {
-    $partial_roots[$name] = $value;
+    $this->partial_roots[$name] = $value;
   }
 
   public function add_helpers($list) {
