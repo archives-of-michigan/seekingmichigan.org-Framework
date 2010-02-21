@@ -8,7 +8,7 @@ class Application {
 
   function __construct() {
     $this->helpers = array();
-    $this->partial_roots = array(APP_DEFAULT_PARTIAL_PATH => dirname(__FILE__).'/../include/partials');
+    $this->partial_roots = array(APP_DEFAULT_PARTIAL_PATH => realpath(dirname(__FILE__).'/../include/partials'));
   }
 
   public function add_partial_root($name, $value) {
@@ -47,7 +47,7 @@ class Application {
       }
     }
     echo "<!-- WARNING could not find partial $name in partial paths ";
-    var_dump($partial_roots);
+    var_dump($this->partial_roots);
     echo "-->";
     return '';
   }
