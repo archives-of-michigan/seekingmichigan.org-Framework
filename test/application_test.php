@@ -32,4 +32,16 @@ class ApplicationTest extends PHPUnit_Framework_TestCase {
          ->will($this->returnValue('/look/page/2'));
     $this->assertEquals('look',$app->category());
   }
+
+  public function testPartialPathWithRoot() {
+    $app = $this->getMock('Application', array('partial_exists'));
+
+    $app->add_partial_root('cdm', '/path/to/cdm');
+
+    $app->expects($this->any())
+        ->method('partial_exists')
+        ->will($this->returnValue(true));
+
+    $this->assertNotEquals('', $app->partial_path('cdm/myfile.php'));
+  }
 }

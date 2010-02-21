@@ -12,7 +12,7 @@ class Application {
   }
 
   public function add_partial_root($name, $value) {
-    $partial_roots[$name] = $value;
+    $this->partial_roots[$name] = $value;
   }
 
   public function add_helpers($list) {
@@ -35,10 +35,14 @@ class Application {
     return $this->helpers[$name];
   }
 
+  public function partial_exists($partial_path) {
+    file_exists($partial_path);
+  }
+
   public function partial_path($name) {
-    foreach($partial_roots as $root => $path) {
+    foreach($this->partial_roots as $root => $path) {
       $partial_path = join('/',array($path,$name));
-      if(file_exists($partial_path)) {
+      if($this->partial_exists($partial_path)) {
         return $partial_path;
       }
     }
