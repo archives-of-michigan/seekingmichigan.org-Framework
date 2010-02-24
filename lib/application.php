@@ -36,17 +36,17 @@ class Application {
   }
 
   public function partial_exists($partial_path) {
-    file_exists($partial_path);
+    return file_exists($partial_path);
   }
 
   public function partial_path($name) {
     foreach($this->partial_roots as $root => $path) {
-      $partial_path = join('/',array($path,$name));
+      $partial_path = join('/',array($path,$name.".php"));
       if($this->partial_exists($partial_path)) {
         return $partial_path;
       }
     }
-    echo "<!-- WARNING could not find partial $name in partial paths ";
+    echo "<!-- WARNING could not find partial $name.php in partial paths ";
     var_dump($this->partial_roots);
     echo "-->";
     return '';
