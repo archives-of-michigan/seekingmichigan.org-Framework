@@ -56,8 +56,10 @@ class Application {
     $args = func_get_args();
     $name = array_shift($args);
     $vars = array_shift($args);
-    foreach($vars as $var => $value) {
-      $$var = $value;
+    if($vars) {
+      foreach($vars as $var => $value) {
+        $$var = $value;
+      }
     }
     include($this->partial_path($name));
   }
