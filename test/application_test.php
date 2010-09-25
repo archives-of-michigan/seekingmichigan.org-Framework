@@ -34,25 +34,19 @@ class ApplicationTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('look',$app->category());
   }
   public function testCategoryWithQueryString() {
-    $app = $this->getMock('Application', array('uri', 'query_string'));
+    $app = $this->getMock('Application', array('uri'));
      
     $app->expects($this->any())
          ->method('uri')
-         ->will($this->returnValue('/'));
-    $app->expects($this->any())
-         ->method('query_string')
-         ->will($this->returnValue('?s=foo&cat=4&search_button=+'));
+         ->will($this->returnValue('/?s=+teach&cat=3&search-button=+'));
     $this->assertEquals('mycat',$app->category());
   }
   public function testCategoryWithoutQueryString() {
-    $app = $this->getMock('Application', array('uri', 'query_string'));
+    $app = $this->getMock('Application', array('uri'));
      
     $app->expects($this->any())
          ->method('uri')
-         ->will($this->returnValue('/'));
-    $app->expects($this->any())
-         ->method('query_string')
-         ->will($this->returnValue('?s=foo&search_button=+'));
+         ->will($this->returnValue('/?s=foo&search_button=+'));
     $this->assertEquals('',$app->category());
   }
 
