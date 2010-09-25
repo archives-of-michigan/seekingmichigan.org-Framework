@@ -73,11 +73,25 @@ class Application {
     if(!$path[1]) {
       preg_match('/([^\/\?]+)/', $this->uri(), $path);
     }
+    if(!$path[1]) {
+      preg_match('/cat=([^&]+)/', $this->query_string(), $path);
+      if($path[1]) {
+        return get_cat_name($path[1]);
+      }
+    }
 
     return $path[1];
   }
 
   public function uri() {
     return $_SERVER['REQUEST_URI'];
+  }
+
+  public function query_string() {
+    return $_SERVER['QUERY_STRING'];
+  }
+
+  public function wpdb() {
+    $wpdb;
   }
 }

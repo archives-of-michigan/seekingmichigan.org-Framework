@@ -74,4 +74,8 @@ function dmGetCollectionList() {
 function dmQuery() {
   return array();
 }
+
+function get_cat_name($id) {
+  return 'mycat';
+}
 ?>

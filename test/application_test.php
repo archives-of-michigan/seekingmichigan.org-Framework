@@ -1,4 +1,5 @@
 <?php
+require_once dirname(__FILE__).'/test_helper.php';
 require_once dirname(__FILE__).'/../lib/application.php';
 
 class ApplicationTest extends PHPUnit_Framework_TestCase {
@@ -31,6 +32,28 @@ class ApplicationTest extends PHPUnit_Framework_TestCase {
          ->method('uri')
          ->will($this->returnValue('/look/page/2'));
     $this->assertEquals('look',$app->category());
+  }
+  public function testCategoryWithQueryString() {
+    $app = $this->getMock('Application', array('uri', 'query_string'));
+     
+    $app->expects($this->any())
+         ->method('uri')
+         ->will($this->returnValue('/'));
+    $app->expects($this->any())
+         ->method('query_string')
+         ->will($this->returnValue('?s=foo&cat=4&search_button=+'));
+    $this->assertEquals('mycat',$app->category());
+  }
+  public function testCategoryWithoutQueryString() {
+    $app = $this->getMock('Application', array('uri', 'query_string'));
+     
+    $app->expects($this->any())
+         ->method('uri')
+         ->will($this->returnValue('/'));
+    $app->expects($this->any())
+         ->method('query_string')
+         ->will($this->returnValue('?s=foo&search_button=+'));
+    $this->assertEquals('',$app->category());
   }
 
   public function testPartialPathWithRoot() {
